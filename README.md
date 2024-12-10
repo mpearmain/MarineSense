@@ -1,19 +1,38 @@
 # ForecastIQ
 
-ForecastIQ is a forecasting engine tailored to the complex and interconnected maritime markets. By blending long-term macroeconomic insights with real-time operational signals, it provides a flexible, data-driven framework for anticipating both gradual shifts and sudden disruptions. Beyond standard forecasting, it supports scenario planning—including "black swan" events—and integrates user feedback to continuously refine its models, allowing maritime stakeholders to adapt and innovate in an ever-changing environment.
+ForecastIQ is a forecasting engine tailored to complex and interconnected maritime markets. By blending long-term 
+macroeconomic insights with real-time operational signals, it provides a flexible, data-driven framework for 
+anticipating both gradual shifts and sudden disruptions. Beyond standard forecasting, it supports scenario 
+planning—including "black swan" events—and integrates user feedback to continuously refine its models, allowing maritime
+stakeholders to adapt and innovate given their views of the environment.
 
 ## Overview
 
-Maritime trade is shaped by a unique interplay of steady macroeconomic trends and abrupt, high-impact disruptions. On one hand, long-term factors—such as changes in sentiment, foreign exchange rates, regulatory shifts, and economic growth trajectories—influence the broad contours of global trade. For example, if India’s imports of construction materials rise significantly, it may suggest a shift away from traditional suppliers like China, potentially increasing steel demand for new building projects worldwide. These macro-level trends affect all commodities and trade routes, guiding strategic decisions over extended horizons.
+Maritime trade is shaped by a unique interplay of steady macroeconomic trends and abrupt, high-impact disruptions. 
+On one hand, long-term factors—such as changes in sentiment, foreign exchange rates, regulatory shifts, and economic 
+growth trajectories—influence the broad contours of global trade. For example, if India’s imports of construction 
+materials rise significantly, it may suggest a shift away from traditional suppliers like China, potentially increasing 
+steel demand for new building projects worldwide. 
 
-On the other hand, maritime markets face sporadic shocks that can instantly alter supply-demand balances. Port closures, weather disruptions, and geopolitical tensions can reshape vessel availability, voyage durations, and spot rates overnight. These disruptions ripple through the value chain, affecting everything from short-term earnings on freight contracts to the viability of long-term hedging strategies.
+These macro-level trends affect all commodities and trade routes, guiding strategic decisions over extended horizons.
+On the other hand, maritime markets face sporadic shocks that can instantly alter supply-demand balances. Port closures,
+weather disruptions, and geopolitical tensions can reshape vessel availability, voyage durations, and spot rates 
+overnight. 
 
-In addition to these external factors, maritime-specific metrics further complicate forecasting. Ton-mile demand, vessel age profiles, dry bulk cargo mix, and average voyage times all influence the timing and cost of shipping operations. Meanwhile, shipping companies often hold long-term contracts, providing strategic leverage in capitalising on market imbalances. For instance, a bulk carrier halfway through fulfilling a yearly contract for bauxite shipments can adjust its strategy if unexpected route blockages or commodity demand spikes occur mid-year.
+These disruptions ripple through the value chain, affecting everything from short-term earnings on freight contracts to 
+the viability of long-term hedging strategies.
 
-ForecastIQ addresses these challenges by integrating layers of static and dynamic data, scenario modelling, and user input within a multi-agent framework. This approach yields coherent forecasts that adapt to unforeseen disruptions, leverage proprietary data for competitive advantage, and reflect granular maritime operational details. In doing so, ForecastIQ enables informed decision-making, strategic positioning, and opportunistic plays in a highly variable global marketplace.
+In addition to these external factors, maritime-specific metrics further complicate forecasting. Ton-mile demand, vessel
+age profiles, dry bulk cargo mix, and average voyage times all influence the timing and cost of shipping operations. 
+Meanwhile, shipping companies often hold long-term contracts, providing strategic leverage in capitalising on market 
+imbalances. For instance, a bulk carrier halfway through fulfilling a yearly contract for bauxite shipments can adjust 
+its strategy if unexpected route blockages or commodity demand spikes occur mid-year.
 
-
-
+ForecastIQ addresses these challenges by integrating layers of static and dynamic data, scenario modelling, and user 
+input within a multi-agent framework. This approach yields coherent forecasts that adapt to unforeseen disruptions, 
+leverage proprietary data for competitive advantage, and reflect granular maritime operational details. In doing so, 
+ForecastIQ enables informed decision-making, strategic positioning, and opportunistic plays in a highly variable global 
+marketplace.
 
 ForecastIQ addresses these challenges through:
 
