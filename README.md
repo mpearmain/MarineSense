@@ -1,18 +1,24 @@
 # ForecastIQ
 
-ForecastIQ is a forecasting engine tailored to complex and interconnected maritime markets. By blending long-term 
+ForecastIQ is a forecasting engine tailored to the maritime freight markets. By blending long-term 
 macroeconomic insights with real-time operational signals, it provides a flexible, data-driven framework for 
 anticipating both gradual shifts and sudden disruptions. Beyond standard forecasting, it supports scenario 
-planning—including "black swan" events—and integrates user feedback to continuously refine its models, allowing maritime
-stakeholders to adapt and innovate given their views of the environment.
+planning—including "black swan" events and integrates user / S.M.E feedback to continuously refine its models and 
+predictions allowing personalised view of market and physical conditions given their views of the environment and future 
+beliefs.
 
 ## Overview
 
-Maritime trade is shaped by a unique interplay of steady macroeconomic trends and abrupt, high-impact disruptions. 
-On one hand, long-term factors—such as changes in sentiment, foreign exchange rates, regulatory shifts, and economic 
-growth trajectories—influence the broad contours of global trade. For example, if India’s imports of construction 
-materials rise significantly, it may suggest a shift away from traditional suppliers like China, potentially increasing 
-steel demand for new building projects worldwide. 
+Maritime trade is influenced by both steady macroeconomic factors and sudden disruptions. Long-term elements such as 
+changes in sentiment, exchange rates, regulations, and economic growth trajectories influence the broad contours of 
+global trade, while unexpected shifts can quickly alter established routes. 
+
+For example, if India significantly increases its imports of construction materials, it may divert vessel traffic away 
+from lanes previously dominated by China. This redirection affects vessel positioning, backhaul routes, and voyage 
+timings, ultimately impacting freight rates and operational strategies. 
+Though actual outcomes depend on real market data and route logistics, this scenario illustrates how demand shifts can
+reshape maritime dynamics. Recognising these changes early allows more informed decisions before the market fully 
+responds.
 
 These macro-level trends affect all commodities and trade routes, guiding strategic decisions over extended horizons.
 On the other hand, maritime markets face sporadic shocks that can instantly alter supply-demand balances. Port closures,
@@ -90,6 +96,7 @@ The system comprises several orchestrators, each responsible for a domain of the
   - **Hedging Strategy Agent:** Suggests FFA hedge recommendations, identifies market opportunities.
 
 This ends up looking something like:
+
 ![Radial Tree](./RadialTree/RadialTree.png)
 
 
