@@ -1,6 +1,6 @@
-# ForecastIQ
+# MarineSense
 
-ForecastIQ is a forecasting engine tailored to the maritime freight markets. By blending long-term 
+MarineSense is a forecasting engine tailored to the maritime freight markets. By blending long-term 
 macroeconomic insights with real-time operational signals, it provides a flexible, data-driven framework for 
 anticipating both gradual shifts and sudden disruptions. Beyond standard forecasting, it supports scenario 
 planning—including "black swan" events and integrates user / S.M.E feedback to continuously refine its models and 
@@ -34,13 +34,13 @@ Meanwhile, shipping companies often hold long-term contracts, providing strategi
 imbalances. For instance, a bulk carrier halfway through fulfilling a yearly contract for bauxite shipments can adjust 
 its strategy if unexpected route blockages or commodity demand spikes occur mid-year.
 
-ForecastIQ addresses these challenges by integrating layers of static and dynamic data, scenario modelling, and user 
+MarineSense addresses these challenges by integrating layers of static and dynamic data, scenario modelling, and user 
 input within a multi-agent framework. This approach yields coherent forecasts that adapt to unforeseen disruptions, 
 leverage proprietary data for competitive advantage, and reflect granular maritime operational details. In doing so, 
-ForecastIQ enables informed decision-making, strategic positioning, and opportunistic plays in a highly variable global 
+MarineSense enables informed decision-making, strategic positioning, and opportunistic plays in a highly variable global 
 marketplace.
 
-ForecastIQ addresses these challenges through:
+MarineSense addresses these challenges through:
 
 1. **Hierarchical Graph Structure:**  
    Organises agents and sub-agents into orchestrators that manage data collection, forecasting, scenario generation, and downstream insights.
@@ -108,7 +108,7 @@ At a chosen future horizon (N steps ahead), the Black Swan Scenario Agent trigge
 2. Forces the forecast agents to incorporate sudden breaks in historical patterns.
 3. Guides the insights layer to rapidly develop contingency plans, hedging strategies, and revised vessel allocation schemes.
 
-This capability ensures that ForecastIQ is not only robust against known historical patterns but is also equipped to reason about and adapt to events outside normal distributions.
+This capability ensures that MarineSense is not only robust against known historical patterns but is also equipped to reason about and adapt to events outside normal distributions.
 
 ## User Feedback Integration
 
@@ -119,4 +119,4 @@ The User Interaction Layer allows domain experts to review intermediate results 
 - **Error Checking and Confidence Propagation:** Introduce Bayesian methods to propagate uncertainties and confidence intervals through the DAG, reducing the impact of upstream errors.
 - **Scenario Diversity:** Extend scenario coverage to seasonal route competitions, currency shocks, and route-specific commodity shifts.
 
-ForecastIQ provides a flexible, maritime-focused forecasting ontology. It marries static macro-trends with dynamic real-time signals, overlays scenario analysis—including rare black swan events—and transforms these inputs into actionable maritime insights. By supporting user feedback and clearly delineating static and dynamic layers, ForecastIQ is designed to evolve with market conditions, delivering more informed, adaptive decision-making tools for maritime stakeholders.
+MarineSense provides a flexible, maritime-focused forecasting ontology. It marries static macro-trends with dynamic real-time signals, overlays scenario analysis—including rare black swan events—and transforms these inputs into actionable maritime insights. By supporting user feedback and clearly delineating static and dynamic layers, MarineSense is designed to evolve with market conditions, delivering more informed, adaptive decision-making tools for maritime stakeholders.

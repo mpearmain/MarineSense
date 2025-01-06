@@ -1,5 +1,5 @@
 [tool.poetry]
-name = "forecastiq"
+name = "marinesense"
 version = "0.1.0"
 description = ""
 authors = ["Michael Pearmain"]
