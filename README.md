@@ -97,7 +97,7 @@ The system comprises several orchestrators, each responsible for a domain of the
 
 This ends up looking something like:
 
-![Radial Tree](./RadialTree/RadialTree.png)
+![Radial Tree](images/RadialTree.png)
 
 
 ## Introducing the Black Swan Scenario
