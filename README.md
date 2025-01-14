@@ -1,122 +1,232 @@
-# MarineSense
+# **MarineSense: Hierarchical Bayesian Forecasting for Maritime Markets**
 
-MarineSense is a forecasting engine tailored to the maritime freight markets. By blending long-term 
-macroeconomic insights with real-time operational signals, it provides a flexible, data-driven framework for 
-anticipating both gradual shifts and sudden disruptions. Beyond standard forecasting, it supports scenario 
-planning—including "black swan" events and integrates user / S.M.E feedback to continuously refine its models and 
-predictions allowing personalised view of market and physical conditions given their views of the environment and future 
-beliefs.
+MarineSense is a flexible and sophisticated forecasting engine tailored for the maritime freight markets. By integrating hierarchical Bayesian methods, term structure modelling, SHAP-based interpretability, and LLM-driven user feedback, it provides actionable insights into gradual market shifts and sudden disruptions. MarineSense transforms static and dynamic data layers into coherent, probabilistic forecasts across routes, regions, and global aggregates.
 
-## Overview
+---
 
-Maritime trade is influenced by both steady macroeconomic factors and sudden disruptions. Long-term elements such as 
-changes in sentiment, exchange rates, regulations, and economic growth trajectories influence the broad contours of 
-global trade, while unexpected shifts can quickly alter established routes. 
+## **Core Features**
 
-For example, if India significantly increases its imports of construction materials, it may divert vessel traffic away 
-from lanes previously dominated by China. This redirection affects vessel positioning, backhaul routes, and voyage 
-timings, ultimately impacting freight rates and operational strategies. 
-Though actual outcomes depend on real market data and route logistics, this scenario illustrates how demand shifts can
-reshape maritime dynamics. Recognising these changes early allows more informed decisions before the market fully 
-responds.
+### **1. Hierarchical Bayesian Forecasting**
+- Multi-level predictions spanning route, regional, and global levels.
+- Coherent aggregation and uncertainty propagation across all levels.
+- Incorporates expert adjustments with reliability weighting.
 
-These macro-level trends affect all commodities and trade routes, guiding strategic decisions over extended horizons.
-On the other hand, maritime markets face sporadic shocks that can instantly alter supply-demand balances. Port closures,
-weather disruptions, and geopolitical tensions can reshape vessel availability, voyage durations, and spot rates 
-overnight. 
+### **2. Term Structure Modelling**
+- Forward curve modelling for FFA markets across multiple tenors (1M, 3M, 6M, etc.).
+- Agnostic to specific models (e.g., Nelson-Siegel, PCA, or hybrid approaches).
+- Regime-switching dynamics to capture high- and low-volatility states.
 
-These disruptions ripple through the value chain, affecting everything from short-term earnings on freight contracts to 
-the viability of long-term hedging strategies.
+### **3. SHAP-Based Interpretability**
+- Feature attribution at every hierarchical level.
+- Temporal evolution of feature contributions.
+- LLM integration to interpret SHAP values and provide actionable feedback to users.
 
-In addition to these external factors, maritime-specific metrics further complicate forecasting. Ton-mile demand, vessel
-age profiles, dry bulk cargo mix, and average voyage times all influence the timing and cost of shipping operations. 
-Meanwhile, shipping companies often hold long-term contracts, providing strategic leverage in capitalising on market 
-imbalances. For instance, a bulk carrier halfway through fulfilling a yearly contract for bauxite shipments can adjust 
-its strategy if unexpected route blockages or commodity demand spikes occur mid-year.
+### **4. Scenario Planning**
+- Models potential disruptions, including black swan events.
+- Simulates port closures, geopolitical shocks, and demand fluctuations.
+- Guides insights for vessel allocation, hedging strategies, and risk mitigation.
 
-MarineSense addresses these challenges by integrating layers of static and dynamic data, scenario modelling, and user 
-input within a multi-agent framework. This approach yields coherent forecasts that adapt to unforeseen disruptions, 
-leverage proprietary data for competitive advantage, and reflect granular maritime operational details. In doing so, 
-MarineSense enables informed decision-making, strategic positioning, and opportunistic plays in a highly variable global 
-marketplace.
+### **5. Uncertainty Quantification**
+- Comprehensive decomposition of uncertainty: base models, term structures, and expert inputs.
+- Regime-dependent variance scaling for credible intervals.
+- Risk assessment integrated into scenario analyses.
 
-MarineSense addresses these challenges through:
+---
 
-1. **Hierarchical Graph Structure:**  
-   Organises agents and sub-agents into orchestrators that manage data collection, forecasting, scenario generation, and downstream insights.
+## **System Overview**
 
-2. **Static vs. Dynamic Data Layers:**  
-   **Static Data** layers aggregate long-term indicators—macro trends, historical route performance, commodity trade patterns.  
-   **Dynamic Data** layers focus on real-time or frequently updated data—AIS vessel tracking, port congestion, and fuel prices.
+MarineSense tackles the complexities of maritime forecasting by combining:
 
-3. **Scenario Planning:**  
-   Multiple scenario agents model potential disruptions. Notably, a dedicated Black Swan Scenario Agent introduces rare, unforeseen, high-impact events at a specified forecast horizon (N steps into the future).
+### **Static vs. Dynamic Data Layers**
+- **Static Data**: Long-term indicators, including macroeconomic trends, historical route performance, and commodity trade patterns.
+- **Dynamic Data**: Real-time updates from AIS vessel tracking, port congestion data, and fuel prices.
 
-4. **User Feedback Loops:**  
-   Users can interact with intermediate outputs, provide corrections, or highlight known future events. This feedback improves relevance, quality, and adaptability of forecasts.
+### **Scenario Planning Agents**
+- **Disruption Scenarios Agent**: Models port closures, geopolitical shocks, and supply-side disruptions.
+- **Demand Fluctuation Modeller**: Captures seasonal and market-driven changes in commodity flows.
+- **Black Swan Scenario Agent**: Simulates rare, high-impact events to challenge assumptions and stress-test strategies.
 
-5. **Maritime-Specific Nuances:**  
-   Maritime pricing complexity (e.g., FFA rates, Baltic Index components), commodity-specific demand patterns, and seasonal route dynamics are incorporated through specialised sub-agents.
+### **User Feedback Loops**
+- Users interact with SHAP-explained outputs via an LLM interface.
+- Real-time feedback refines forecasts, adjusts scenario settings, and improves model assumptions.
 
-## Architecture
-
-The system comprises several orchestrators, each responsible for a domain of the forecasting pipeline:
-
-- **Main Orchestrator (O1):**  
-  The top-level coordinator, linking static, dynamic, forecasting, scenario, and insights components.
-
-- **Static Data Orchestrator (O2):**  
-  Handles macroeconomic data, historical performance, and commodity analyses.  
-  - **Macroeconomic Data Agent:** GDP trends, trade indices, currency volatility.  
-  - **Historical Route Performance Agent:** FFA history, Baltic indices, seasonal patterns.  
-  - **Commodity Analysis Agent:** Iron ore and coal trends, mining output schedules.
-
-- **Dynamic Data Orchestrator (O3):**  
-  Processes real-time inputs.  
-  - **Real-Time Vessel Tracking Agent:** AIS data parsing, vessel availability, ton-mile demand.  
-  - **Port Disruption Monitoring Agent:** Weather impacts, congestion, geopolitical risks.  
-  - **Fuel Price and Cost Agent:** Fuel prices, cost calculators.
-
-- **Forecast Orchestrator (O4):**  
-  Integrates static and dynamic insights into actionable forecasts.  
-  - **Time Series Forecasting Agent:** Combines data for route-level predictions.  
-  - **Route-Specific Predictions Agent:** Specialised forecasts for key routes (C3, C5).  
-  - **Market Volatility Modeller:** Monte Carlo simulations for rate fluctuation scenarios.
-
-- **Scenario Orchestrator (O5):**  
-  Models what-if and disruption scenarios.  
-  - **Disruption Scenarios Agent:** Port closures, geopolitical shocks, vessel supply issues.  
-  - **Demand Fluctuation Modeller:** Commodity demand surges or seasonal drops.  
-  - **Black Swan Scenario Agent:** Introduces unforeseeable, high-impact events at a future forecast step (N), altering downstream logic and forcing a re-evaluation of previously stable assumptions.
-
-- **Insights Orchestrator (O6):**  
-  Turns forecasts and scenarios into operational strategies.  
-  - **Vessel Allocation Agent:** Spot vs contract decisions, optimal vessel deployment.  
-  - **Contract Optimisation Agent:** Parses contracts, assesses laytime penalties, identifies risks.  
-  - **Hedging Strategy Agent:** Suggests FFA hedge recommendations, identifies market opportunities.
-
-This ends up looking something like:
+The complexities can be seen as something like: 
 
 ![Radial Tree](images/RadialTree.png)
 
+---
 
-## Introducing the Black Swan Scenario
+## **Mathematical Framework**
 
-At a chosen future horizon (N steps ahead), the Black Swan Scenario Agent triggers conditions that represent a drastically different world than previously assumed. For example, it may simulate a critical infrastructure failure or an unprecedented regulatory disruption. The system then:
+### **Hierarchical Structure**
+MarineSense enforces coherence across hierarchical levels:
 
-1. Adjusts dynamic data assumptions: Vessel tracking, port disruptions, and fuel costs are re-evaluated under extreme conditions.
-2. Forces the forecast agents to incorporate sudden breaks in historical patterns.
-3. Guides the insights layer to rapidly develop contingency plans, hedging strategies, and revised vessel allocation schemes.
+\[
+Y_t = S Y_{t, \text{base}} \\
+\text{Where: } \\
+Y_t: \text{Aggregated forecasts at time } t. \\
+S: \text{Summing matrix mapping base-level forecasts to aggregates.} \\
+Y_{t, \text{base}}: \text{Base-level forecasts.}
+\]
 
-This capability ensures that MarineSense is not only robust against known historical patterns but is also equipped to reason about and adapt to events outside normal distributions.
+### **Term Structure Modelling**
+Forward curves are modelled using general representations, such as:
 
-## User Feedback Integration
+\[
+f(\tau) = \beta_0 + \beta_1 \frac{1 - e^{-\tau/\lambda_1}}{\tau/\lambda_1} + \beta_2 \left( \frac{1 - e^{-\tau/\lambda_1}}{\tau/\lambda_1} - e^{-\tau/\lambda_1} \right)
+\]
 
-The User Interaction Layer allows domain experts to review intermediate results and provide corrections. This feedback can loop back into static or dynamic agents, influence scenario settings, or refine forecasting assumptions. Over time, feedback helps the model learn preferences, correct biases, and enhance accuracy.
+Where:
+- \( \tau \): Time to maturity (tenor).
+- \( \beta \): Term structure parameters.
+- \( \lambda \): Decay factor for exponential smoothing.
 
-## Potential Enhancements
+### **Uncertainty Quantification**
+MarineSense integrates uncertainties from various sources:
 
-- **Error Checking and Confidence Propagation:** Introduce Bayesian methods to propagate uncertainties and confidence intervals through the DAG, reducing the impact of upstream errors.
-- **Scenario Diversity:** Extend scenario coverage to seasonal route competitions, currency shocks, and route-specific commodity shifts.
+\[
+\Sigma_{\text{total}} = H (H^T \Sigma^{-1} H)^{-1} H^T
+\]
 
-MarineSense provides a flexible, maritime-focused forecasting ontology. It marries static macro-trends with dynamic real-time signals, overlays scenario analysis—including rare black swan events—and transforms these inputs into actionable maritime insights. By supporting user feedback and clearly delineating static and dynamic layers, MarineSense is designed to evolve with market conditions, delivering more informed, adaptive decision-making tools for maritime stakeholders.
+Where:
+- \( \Sigma = w_1 \Sigma_{\text{base}} + w_2 \Sigma_{\text{term}} + w_3 \Sigma_{\text{expert}} \).
+- \( H \): Hierarchical summing matrix.
+- \( w_i \): Weights for source-specific uncertainty contributions.
+
+---
+
+## **SHAP Value Integration with LLMs**
+
+### **Feature Attribution and Explanation**
+SHAP provides insights into feature contributions at every level:
+
+1. **Base-Level Contributions**:
+   \[
+   \phi_i = \sum_{S \subseteq N \setminus \{i\}} \frac{|S|! (|N|-|S|-1)!}{|N|!} [f(S \cup \{i\}) - f(S)]
+   \]
+
+2. **Hierarchical Propagation**:
+   \[
+   \phi_{l, i} = H[l, :] \cdot \phi_{\text{base}, i}
+   \]
+
+3. **Temporal SHAP Values**:
+   \[
+   \frac{\partial \phi_i(t)}{\partial t} = g(\phi_i(t), X_t, s_t)
+   \]
+
+### **LLM-Driven Interpretations**
+- SHAP values are translated into actionable insights using LLMs.
+- Users receive plain-language explanations of how features like ton-mile demand, vessel supply, or port disruptions influence predictions.
+- Suggestions for corrective actions or adjustments are automatically generated.
+
+---
+
+## **Architecture**
+
+MarineSense organizes its components into orchestrators:
+
+### **Main Orchestrator**
+- Coordinates static, dynamic, forecasting, scenario, and insights layers.
+
+### **Static Data Orchestrator**
+- **Macroeconomic Data Agent**: Tracks GDP trends, trade indices, and currency volatility.
+- **Historical Route Performance Agent**: Manages FFA history, Baltic indices, and seasonal trends.
+- **Commodity Analysis Agent**: Monitors iron ore, coal, and other commodity flows.
+
+### **Dynamic Data Orchestrator**
+- **Real-Time Vessel Tracking Agent**: Processes AIS data for availability and ton-mile demand.
+- **Port Disruption Monitoring Agent**: Tracks weather, congestion, and geopolitical risks.
+- **Fuel Price Agent**: Integrates fuel cost data into operational forecasts.
+
+### **Scenario Orchestrator**
+- Models disruptions, demand shifts, and black swan events.
+
+### **Insights Orchestrator**
+- Delivers actionable strategies:
+  - Vessel allocation.
+  - Contract optimization.
+  - Hedging recommendations.
+
+---
+
+## **Example Use Case: C5 Route Forecasting**
+
+### **Scenario**
+- Base rate: 15.25 USD/ton.
+- Contango in the forward curve.
+- Expert view indicates supply constraints.
+
+### **Implementation**
+```python
+from marinesense.orchestrators.ffa_orchestrator import FFAOrchestrator
+
+# Initialize the orchestrator
+orchestrator = FFAOrchestrator(
+    route="C5",
+    tenors=["1M", "3M", "6M", "Q4", "CAL25"],
+    hierarchy_levels=["route", "regional", "global"]
+)
+
+# Define market conditions
+conditions = {
+    "regime": "high_volatility",
+    "expert_views": {
+        "supply_constraint": True,
+        "confidence": 0.8
+    }
+}
+
+# Generate forecast
+results = orchestrator.forecast(features, conditions)
+```
+
+---
+
+## **Potential Enhancements**
+
+- **Enhanced Error Propagation**: Introduce Bayesian methods to propagate uncertainties through the pipeline.
+- **Scenario Expansion**: Model seasonal route competitions, currency shocks, and route-specific commodity shifts.
+- **Real-Time LLM Integration**: Expand SHAP value interpretations for adaptive user interaction.
+
+---
+
+## **Contributing**
+
+1. Fork the repository.
+2. Create your feature branch:
+   ```bash
+   git checkout -b feature/amazing-feature
+   ```
+3. Commit your changes:
+   ```bash
+   git commit -m "feat: add amazing feature"
+   ```
+4. Push to the branch:
+   ```bash
+   git push origin feature/amazing-feature
+   ```
+5. Open a Pull Request.
+
+---
+
+## **License**
+
+This project is licensed under the MIT License. See the LICENSE file for details.
+
+---
+
+## **Citation**
+
+If you use MarineSense in your research, please cite:
+
+```bibtex
+@software{marinesense2024,
+  title={MarineSense: Hierarchical Bayesian Forecasting for Maritime Markets},
+  author={Your Name},
+  year={2024},
+  url={https://github.com/yourusername/marinesense}
+}
+```
+
+
