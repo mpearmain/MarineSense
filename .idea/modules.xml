@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/ForecastIQ.iml" filepath="$PROJECT_DIR$/.idea/ForecastIQ.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/MarineSense.iml" filepath="$PROJECT_DIR$/.idea/MarineSense.iml" />
     </modules>
   </component>
 </project>

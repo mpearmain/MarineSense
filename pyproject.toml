@@ -1,24 +1,23 @@
 [tool.poetry]
 name = "marinesense"
 version = "0.1.0"
-description = ""
-authors = ["Michael Pearmain"]
-readme = "README.md"
+description = "Hierarchical Bayesian Forecasting for Maritime Markets"
+authors = ["Your Name <your.email@example.com>"]
 
 [tool.poetry.dependencies]
-python = ">=3.12,<4.0"
+python = "^3.12"
+numpy = "^1.24.0"
 pandas = "^2.0.0"
-numpy = "^1.25.0"
-requests = "^2.28.0"
-plotly = "^5.0.0"
-streamlit = "^1.25.0"
-scikit-learn = "^1.3.0"
-pydantic = "^2.0.0"
-pydantic-ai ="0.0.18"
-devtools = "^0.12.2"
-httpx = "0.27.2"
+scipy = "^1.10.0"
+scikit-learn = "^1.2.0"
+shap = "^0.41.0"
+
+[tool.poetry.dev-dependencies]
+pytest = "^7.0.0"
+black = "^22.0.0"
+flake8 = "^4.0.0"
+
 
 [build-system]
-requires = ["poetry-core"]
+requires = ["poetry-core>=1.0.0"]
 build-backend = "poetry.core.masonry.api"
-
