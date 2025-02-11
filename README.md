@@ -229,4 +229,61 @@ If you use MarineSense in your research, please cite:
 }
 ```
 
+```bash
+sequenceDiagram
+    participant User as Charterer/User
+    participant UI as Web Front-End
+    participant API as API Gateway / Router
+    participant DB as Historical & Real-Time Data Sources
+    participant Coherence as Coherence Client
+    participant Model as Forecasting Engine
+    participant SHAP as SHAP Calculator
+    participant LLM as LLM Insight Generator
+    participant Planner as Scenario Planner
 
+    User->>UI: Query forecast for C5 route
+    UI->>API: Submit query with parameters (route, tenor, adjustments)
+    API->>DB: Retrieve historical freight rates
+    DB-->>API: Return historical data
+    API->>DB: Fetch real-time port congestion & vessel availability
+    DB-->>API: Return real-time data
+    API->>DB: Fetch organisational knowledge (contracts, supply info)
+    DB-->>API: Return internal knowledge
+    
+    API->>Coherence: Send inputs (historical, real-time, internal data)
+    Coherence->>Model: Load pre-trained model and forecast inputs
+    Model-->>Coherence: Return forecasted freight rates
+    
+    Coherence->>SHAP: Calculate feature importance for forecasts
+    SHAP-->>Coherence: Return SHAP values (contributions by feature)
+    Coherence->>LLM: Generate explanation prompts from SHAP values
+    LLM-->>Coherence: Return insights & recommendations
+    
+    Coherence-->>API: Send forecasts, insights, and recommendations
+    API-->>UI: Display results (baseline forecasts, insights, SHAP breakdown)
+    
+    User->>UI: Adjust parameters (e.g., congestion +10%, reduced supply)
+    UI->>API: Submit expert adjustments
+    API->>Coherence: Apply adjustments to forecasts
+    Coherence->>Model: Recalculate forecasts with adjustments
+    Model-->>Coherence: Return updated forecasts
+    Coherence->>SHAP: Recalculate feature importance
+    SHAP-->>Coherence: Return updated SHAP values
+    Coherence->>LLM: Generate updated insights
+    LLM-->>Coherence: Return adjusted insights
+    
+    Coherence-->>API: Send updated forecasts and explanations
+    API-->>UI: Display recalculated results and insights
+    
+    User->>UI: Trigger Black Swan scenario (e.g., port closure)
+    UI->>Planner: Define scenario and event parameters
+    Planner->>Coherence: Generate scenario-adjusted inputs
+    Coherence->>Model: Simulate scenario impacts
+    Model-->>Coherence: Return scenario-adjusted forecasts
+    Coherence->>SHAP: Recalculate feature importance
+    SHAP-->>Coherence: Return scenario-specific SHAP values
+    Coherence->>LLM: Generate scenario-specific insights
+    LLM-->>Coherence: Return insights for the scenario
+    Coherence-->>API: Send scenario results and recommendations
+    API-->>UI: Display scenario impact and suggested actions
+```
